@@ -3,6 +3,7 @@
 <h1 align="center">Weathered</h1>
 <p align="center"><b>The weather app that tells you the truth, and then tells you to go fuck yourself.</b></p>
 <p align="center"><i>Built for people who work outside. Not built for people with delicate feelings.</i></p>
+<p align="center"><b><a href="https://rare621.github.io/Weatherd/">Website</a> · <a href="../../releases/latest">Download for Android</a></b><br><sub>A free, open-source, ad-free Android weather app for construction workers, tradespeople and outdoor workers, that also happens to swear at you.</sub></p>
 
 <p align="center">
   <img src="screenshots/today.jpg" width="19%" alt="Today screen">
