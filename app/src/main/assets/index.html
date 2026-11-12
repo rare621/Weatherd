@@ -1002,16 +1002,23 @@ function setBadges(){
   $$('#rbadges [data-m]').forEach(x=>x.onclick=()=>{RADAR.mode=x.dataset.m;setBadges();applyMode()});
   const m=MODES[mode];$('#rleg').style.background=m.legend;
   $('#rlegcap').innerHTML=`<span>${m.cap[0]}</span><span>${m.cap[1]}</span><span>${m.cap[2]}</span>`;
-  $('#rnote').textContent=m.note+' After now, the map shows the forecast model, not radar.'+(tn.hail?' Hail is flagged from the forecast model because radar cannot identify it.':'');
+  $('#rnote').textContent=m.note+(RADAR.frames.length&&RADAR.frames.length>RADAR.nPast?' Frames after now are the radar service\'s own short-range prediction.':'')+(tn.hail?' Hail is flagged from the forecast model because radar cannot identify it.':'');
 }
 async function loadFrames(){
-  RADAR.tl=[];RADAR.pos=0;
-  const [rv,fc]=await Promise.all([
-    getJSON('https://api.rainviewer.com/public/weather-maps.json',{},12000).catch(()=>null),
-    loadForecastGrid().catch(()=>null)]);
+  RADAR.tl=[];RADAR.pos=0;RADAR.fc=null;
+  // Real radar only. The future part comes from RainViewer's own radar nowcast when it
+  // offers one, capped at the next hour. Frames are spaced 30 minutes apart.
+  const rv=await getJSON('https://api.rainviewer.com/public/weather-maps.json',{},12000).catch(()=>null),fc=null;
   if(rv){RADAR.host=rv.host||'https://tilecache.rainviewer.com';
-    const past=(rv.radar&&rv.radar.past)||[],now=(rv.radar&&rv.radar.nowcast)||[];
-    RADAR.frames=past.concat(now);RADAR.nPast=past.length;}
+    const pastAll=(rv.radar&&rv.radar.past)||[],nowAll=(rv.radar&&rv.radar.nowcast)||[];
+    const every30=(list,anchor,dir)=>{const out=[];let want=anchor;
+      const sorted=dir<0?[...list].reverse():list;
+      for(const f of sorted){if(dir<0?f.time<=want+240:f.time>=want-240){out.push(f);want+=dir*1800}}
+      return dir<0?out.reverse():out};
+    const latest=pastAll.length?pastAll[pastAll.length-1].time:0;
+    const past=latest?every30(pastAll,latest,-1):[];
+    const ahead=latest?every30(nowAll.filter(f=>f.time-latest<=3600+240),latest+1800,1):[];
+    RADAR.frames=past.concat(ahead);RADAR.nPast=past.length;}
   RADAR.fc=fc;
   if(!RADAR.frames.length&&!fc){radarFail('Radar is not available right now.');return}
   RADAR.frames.forEach((f,i)=>RADAR.tl.push({k:'r',i}));
@@ -1078,7 +1085,7 @@ function applyMode(){
   pause();RADAR.layers.forEach(l=>{if(RADAR.map.hasLayer(l))RADAR.map.removeLayer(l)});RADAR.layers=[];
   const m=MODES[curMode()];
   RADAR.frames.forEach((f,i)=>{const l=L.tileLayer(`${RADAR.host}${f.path}/256/{z}/{x}/{y}/${m.color}/1_1.png`,{opacity:0,maxNativeZoom:7,maxZoom:10,zIndex:300+i,crossOrigin:true});
-    l.on('add',()=>{const c=l.getContainer();if(c)c.style.transition='opacity .6s ease'});RADAR.layers.push(l)});
+    l.on('add',()=>{const c=l.getContainer();if(c)c.style.transition='opacity 1s ease'});RADAR.layers.push(l)});
   if(RADAR.fc&&!RADAR.fcl){RADAR.fcl=makeFcLayer().addTo(RADAR.map)}
   setBadges();
   const nowPos=Math.max(0,RADAR.tl.findIndex(e=>e.k==='r'&&e.i===RADAR.nPast-1));
@@ -1095,7 +1102,7 @@ function showAt(p){
     });
     if(RADAR.fcl)RADAR.fcl._c.style.opacity=0;
     const t=RADAR.frames[e.i].time*1000,d=Math.round((t-Date.now())/60000);
-    $('#rts').innerHTML=(e.i<RADAR.nPast?(Math.abs(d)<6?'Now':Math.abs(d)>=60?'−'+Math.floor(Math.abs(d)/60)+' h '+(Math.abs(d)%60?Math.abs(d)%60+'m':''):'−'+Math.abs(d)+' min'):'+'+Math.max(d,0)+' min')+'<small>RADAR</small>';
+    const ad=Math.round(Math.abs(d)/5)*5;$('#rts').innerHTML=(e.i<RADAR.nPast?(ad<10?'Now':ad>=60?'−'+Math.floor(ad/60)+' h'+(ad%60?' '+ad%60+'m':''):'−'+ad+' min'):'+'+Math.max(ad,0)+' min')+(e.i<RADAR.nPast?'<small>RADAR</small>':'<small>PREDICTED</small>');
   }else{
     RADAR.layers.forEach(x=>{if(RADAR.map.hasLayer(x))x.setOpacity(0)});
     if(RADAR.fcl){RADAR.fcl.draw(e.h);RADAR.fcl._c.style.opacity=1}
@@ -1110,8 +1117,8 @@ const PLAY='<svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-1
 function play(){const b=$('#rplay');if(!b)return;b.innerHTML=PAUSE;stopTimer();
   const tick=()=>{const tl=RADAR.tl;if(!tl||!tl.length)return;const last=RADAR.pos>=tl.length-1;
     const next=last?0:RADAR.pos+1;showAt(next);const e=tl[next];
-    RADAR.timer=setTimeout(tick,next===tl.length-1?1800:e.k==='r'?700:170)};
-  RADAR.timer=setTimeout(tick,700)}
+    RADAR.timer=setTimeout(tick,next===tl.length-1?2200:1300)};
+  RADAR.timer=setTimeout(tick,1300)}
 function pause(){stopTimer();const b=$('#rplay');if(b)b.innerHTML=PLAY}
 function stopTimer(){if(RADAR.timer){clearTimeout(RADAR.timer);RADAR.timer=null}}
 function togglePlay(){RADAR.timer?pause():play()}
