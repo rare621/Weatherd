@@ -2,6 +2,7 @@ name: Weathered APK
 on:
   push:
     branches: ['main']
+    paths-ignore: ['README.md', 'screenshots/**']
   workflow_dispatch:
 permissions:
   contents: write
