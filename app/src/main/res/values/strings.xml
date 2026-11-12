@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_small">Weathered · small</string>
+    <string name="widget_medium">Weathered · hourly</string>
+    <string name="widget_large">Weathered · hourly + 5 day</string>
+    <string name="widget_small_desc">Temperature, conditions and an insult.</string>
+    <string name="widget_medium_desc">Now, the next 5 hours, and an insult.</string>
+    <string name="widget_large_desc">Now, the next 5 hours, 5 days, and an insult.</string>
+</resources>

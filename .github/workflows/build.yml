@@ -1,0 +1,48 @@
+name: Weathered APK
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+permissions:
+  contents: write
+  checks: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read build number
+        run: echo "BUILD_CODE=$(grep -oP 'versionCode=\K[0-9]+' version.properties | head -1)" >> "$GITHUB_ENV"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Bundle the map library
+        run: |
+          mkdir -p /tmp/lf && cd /tmp/lf && npm pack leaflet@1.9.4 --silent && tar xzf leaflet-1.9.4.tgz
+          mkdir -p "$GITHUB_WORKSPACE/app/src/main/assets/leaflet"
+          cp package/dist/leaflet.js package/dist/leaflet.css "$GITHUB_WORKSPACE/app/src/main/assets/leaflet/"
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
+      - name: Build APK
+        run: |
+          set +e
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --no-daemon --max-workers=2 --console=plain 2>&1 | tee build.log
+          rc=${PIPESTATUS[0]}
+          grep -E '^e: |error:|AAPT' build.log | head -40 | while read -r l; do echo "::error::$l"; done
+          [ "$rc" -eq 0 ] || exit 1
+          mkdir -p out
+          cp app/build/outputs/apk/debug/*.apk out/Weathered.apk
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "build-$BUILD_CODE-$GITHUB_RUN_NUMBER" out/Weathered.apk \
+            --title "Weathered build $BUILD_CODE (run $GITHUB_RUN_NUMBER)" \
+            --notes "Weatherd: a weather app for people who work outside, and it swears at you."
