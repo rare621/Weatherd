@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weathered – The Weather App That Swears at You (Free Android App for Outdoor Workers)</title>
+<meta name="description" content="Weathered is a free Android weather app for construction workers and anyone who works outside. Hourly and 16-day forecasts, radar that runs 12 hours ahead, work-site safety checks, home screen widgets, and a potty mouth that roasts you about the weather.">
+<meta name="keywords" content="weather app that swears, rude weather app, funny weather app, weather app for construction workers, weather app for outdoor workers, android weather app, free weather app, weather radar app, sarcastic weather app, profane weather app">
+<link rel="canonical" href="https://rare621.github.io/Weatherd/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1328">
+<link rel="icon" href="icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Weathered">
+<meta property="og:title" content="Weathered – the weather app that swears at you">
+<meta property="og:description" content="Free Android weather app for people who work outside. Hourly, 16-day, radar that runs ahead, work-site checks and widgets. It tells you the truth, then tells you to go f*** yourself.">
+<meta property="og:url" content="https://rare621.github.io/Weatherd/">
+<meta property="og:image" content="https://rare621.github.io/Weatherd/social-preview.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Weathered – the weather app that swears at you">
+<meta name="twitter:description" content="Free Android weather app for people who work outside. It tells you the truth, then tells you to go f*** yourself.">
+<meta name="twitter:image" content="https://rare621.github.io/Weatherd/social-preview.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Weathered","alternateName":["Weatherd","Weathered weather app"],
+ "applicationCategory":"WeatherApplication","operatingSystem":"Android 8.0+","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+ "description":"A free Android weather app for construction workers and anyone who works outside, with hourly and 16-day forecasts, radar that runs 12 hours ahead, work-site safety checks, home screen widgets, and profane, sarcastic commentary.",
+ "url":"https://rare621.github.io/Weatherd/","downloadUrl":"https://github.com/rare621/Weatherd/releases/latest","image":"https://rare621.github.io/Weatherd/social-preview.png",
+ "screenshot":["https://rare621.github.io/Weatherd/screenshots/today.jpg","https://rare621.github.io/Weatherd/screenshots/radar.jpg","https://rare621.github.io/Weatherd/screenshots/work.jpg"],
+ "license":"https://www.gnu.org/licenses/gpl-3.0.html","isAccessibleForFree":true,"codeRepository":"https://github.com/rare621/Weatherd"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"Is there a weather app that swears at you?","acceptedAnswer":{"@type":"Answer","text":"Yes. Weathered is a free Android weather app that roasts you about the forecast with profanity, like \"That's a fucking thunderstorm. Sit in the truck.\" You can switch the swearing off in Settings."}},
+ {"@type":"Question","name":"What is the best weather app for construction workers?","acceptedAnswer":{"@type":"Answer","text":"Weathered was built for people who work outside. It gives a go, caution or stop verdict for the next six hours, checks heat, cold, ice, wind, lightning, rain, visibility, UV and air quality, and shows good working windows for concrete, paint, roofing and cranes."}},
+ {"@type":"Question","name":"Is Weathered free?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is free and open source under GPL-3.0, with no ads, no accounts and no tracking."}},
+ {"@type":"Question","name":"Can I turn off the swearing?","acceptedAnswer":{"@type":"Answer","text":"Yes. Settings, Potty mouth, Off. Every line switches to a clean version."}},
+ {"@type":"Question","name":"How do I install Weathered?","acceptedAnswer":{"@type":"Answer","text":"Download Weathered.apk from the GitHub releases page and open it on an Android phone running Android 8.0 or newer."}}]}
+</script>
+<style>
+:root{--bg:#0b1024;--card:rgba(255,255,255,.07);--edge:rgba(255,255,255,.14);--text:#eef2fb;--muted:#a9b4cc;--accent:#ff9a4a;--accent2:#ffd25a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1200px 700px at 85% -10%,rgba(255,138,61,.28),transparent 60%),linear-gradient(180deg,#0d1328 0%,#141c3a 55%,#0b1024 100%);background-color:var(--bg);color:var(--text);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.hero{padding:72px 0 40px;text-align:center}
+.icon{width:108px;height:108px;border-radius:26px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+h1{font-size:clamp(40px,7vw,72px);line-height:1.02;margin:22px 0 10px;letter-spacing:-.03em}
+.tag{font-size:clamp(19px,2.6vw,24px);color:var(--muted);max-width:720px;margin:0 auto}
+.tag b{color:var(--text)}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:30px 0 8px}
+.btn{display:inline-block;padding:15px 26px;border-radius:14px;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#1b0d02;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(255,140,60,.35)}
+.btn.alt{background:var(--card);color:var(--text);border:1px solid var(--edge);box-shadow:none}
+.small{font-size:14px;color:var(--muted)}
+.shots{display:flex;gap:16px;overflow-x:auto;padding:30px 4px 10px;scroll-snap-type:x mandatory}
+.shots img{height:520px;border-radius:26px;border:1px solid var(--edge);box-shadow:0 20px 50px rgba(0,0,0,.4);scroll-snap-align:center;flex:none}
+section{padding:46px 0}
+h2{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin:0 0 14px}
+.quote{font-size:clamp(20px,3vw,28px);font-weight:800;border-left:5px solid var(--accent);padding:6px 0 6px 18px;margin:20px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--edge);border-radius:20px;padding:18px 20px}
+.card h3{margin:0 0 6px;font-size:19px}
+.card p{margin:0;color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--edge)}
+th,td{padding:13px 16px;text-align:left;border-top:1px solid var(--edge);vertical-align:top}
+th{background:rgba(255,255,255,.06);border-top:0}
+td:first-child{white-space:nowrap;color:var(--muted)}
+td em{font-style:normal;font-weight:700}
+.verdicts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.v{padding:10px 16px;border-radius:99px;font-weight:800;border:1px solid}
+.v.g{color:#5ce08f;border-color:#5ce08f}.v.y{color:#ffc14d;border-color:#ffc14d}.v.r{color:#ff6b6b;border-color:#ff6b6b}
+details{background:var(--card);border:1px solid var(--edge);border-radius:16px;padding:14px 18px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}
+details p{color:var(--muted);margin:10px 0 0}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px;text-align:center;border-top:1px solid var(--edge)}
+@media (max-width:600px){.shots img{height:420px}td:first-child{white-space:normal}}
+</style>
+</head>
+<body>
+<header class="hero wrap">
+  <img class="icon" src="icon.png" alt="Weathered weather app icon" width="108" height="108">
+  <h1>Weathered</h1>
+  <p class="tag"><b>The weather app that tells you the truth, and then tells you to go f*** yourself.</b><br>A free Android weather app for construction workers, tradespeople and anyone else who works outside.</p>
+  <div class="cta">
+    <a class="btn" href="https://github.com/rare621/Weatherd/releases/latest">Download for Android (free)</a>
+    <a class="btn alt" href="https://github.com/rare621/Weatherd">View on GitHub</a>
+  </div>
+  <p class="small">No ads · no accounts · no tracking · open source (GPL-3.0) · Android 8.0+</p>
+  <div class="shots" aria-label="Screenshots">
+    <img src="screenshots/today.jpg" alt="Weathered today screen with heavy rain, a swearing comment and a tornado watch" loading="lazy">
+    <img src="screenshots/work.jpg" alt="Work conditions screen with a stop verdict for outdoor work" loading="lazy">
+    <img src="screenshots/radar.jpg" alt="Weather radar running ahead into the forecast" loading="lazy">
+    <img src="screenshots/hourly.jpg" alt="48-hour temperature chart and hourly forecast" loading="lazy">
+    <img src="screenshots/16-day.jpg" alt="16-day weather forecast" loading="lazy">
+  </div>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>A weather app that swears at you. On purpose.</h2>
+  <p>Your phone's weather app says <b>"Rain likely, 60%."</b> Riveting. Weathered says:</p>
+  <p class="quote">"That's a fucking thunderstorm. Sit in the truck and think about your shit life choices."</p>
+  <p>One of those keeps you off a wet roof, and it isn't the polite one. Every other weather app was designed by someone deciding whether to bring a cardigan to brunch. This one is for the people pouring concrete, hanging off ladders, running cranes and standing in a ditch at 6 AM wondering why they didn't become an accountant.</p>
+</section>
+
+<section>
+  <h2>Things it will actually say to you</h2>
+  <table>
+    <tr><th>When it's…</th><th>Weathered says</th></tr>
+    <tr><td>🔥 Hot as hell</td><td><em>"Hotter than Satan's ballsack. Drink some goddamn water, you sweaty cunt."</em></td></tr>
+    <tr><td>🥶 Freezing</td><td><em>"Cold enough to snap your dick off. Hat. Gloves. Move, dickhead."</em></td></tr>
+    <tr><td>🌧️ Raining</td><td><em>"It's pissing rain. Your phone isn't waterproof either, dumb cunt."</em></td></tr>
+    <tr><td>❄️ Snowing</td><td><em>"White shit falling from the sky. Traction, dumbass. Walk like you're 90."</em></td></tr>
+    <tr><td>💨 Windy</td><td><em>"That ladder is a kite with a death wish. Don't be a dumb fuck."</em></td></tr>
+    <tr><td>⚡ Storming</td><td><em>"Lightning's hunting for the tallest dumb cunt on site. Don't be him."</em></td></tr>
+    <tr><td>☀️ Perfect</td><td><em>"Nice day. Try not to fuck it up like you do everything else."</em></td></tr>
+  </table>
+  <p>Tap the insult for a fresh one. The whole risk assessment is three lines:</p>
+  <div class="verdicts"><span class="v g">Get to work, you lazy cunt</span><span class="v y">Pay attention, dickhead</span><span class="v r">Absolutely the fuck not</span></div>
+</section>
+
+<section>
+  <h2>Annoyingly, it's also a really good weather app</h2>
+  <div class="cards">
+    <div class="card"><h3>Hourly and 16-day forecasts</h3><p>48-hour charts for temperature, rain, wind and UV, an hour-by-hour list, and 16 days ahead. Tap any hour for every detail.</p></div>
+    <div class="card"><h3>Radar that runs ahead</h3><p>Two hours of live radar, then up to 12 hours of forecast precipitation, with smooth transitions and automatic rain, snow and storm colours.</p></div>
+    <div class="card"><h3>Work-site checks</h3><p>A go / caution / stop verdict for the next six hours: heat, cold, ice, wind, lightning, rain, visibility, UV and air quality.</p></div>
+    <div class="card"><h3>Good working windows</h3><p>When conditions suit concrete, paint and coatings, roofing, and cranes and lifts over the next 24 hours.</p></div>
+    <div class="card"><h3>Next precipitation</h3><p>Minute-by-minute rain timing for the next four hours, so you know if you have 20 minutes or 2.</p></div>
+    <div class="card"><h3>Severe weather alerts</h3><p>National Weather Service watches and warnings for the US, like tornado watches and wind advisories.</p></div>
+    <div class="card"><h3>Home screen widgets</h3><p>Small, hourly, and hourly plus 5-day widgets that refresh on their own, so your home screen can insult you too.</p></div>
+    <div class="card"><h3>Animated sky</h3><p>Clouds, rain, snow, sleet, hail, lightning bolts, stars and wind that match the real weather outside.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Questions people ask</h2>
+  <details><summary>Is there really a weather app that swears at you?</summary><p>Yes, this one. It's free on Android and it roasts you about the forecast. Turn it off in Settings → Potty mouth if your mom borrows your phone.</p></details>
+  <details><summary>What's the best weather app for construction workers?</summary><p>We're biased, but Weathered was built for exactly that: six-hour go / caution / stop checks, lightning and wind warnings for lifts and ladders, and good windows for concrete, paint and roofing.</p></details>
+  <details><summary>Is it free?</summary><p>Completely. No ads, no accounts, no tracking, no subscription. It's open source under GPL-3.0.</p></details>
+  <details><summary>How do I install it?</summary><p>Download <code>Weathered.apk</code> from the <a href="https://github.com/rare621/Weatherd/releases/latest">releases page</a> and open it on your Android phone. Your phone will warn you about installing apps from outside the Play Store. It's being dramatic.</p></details>
+  <details><summary>Is it on iPhone?</summary><p>Not yet. Android only, for now.</p></details>
+</section>
+
+<section style="text-align:center">
+  <h2>Go on. Let it disrespect you.</h2>
+  <div class="cta"><a class="btn" href="https://github.com/rare621/Weatherd/releases/latest">Download Weathered for Android</a></div>
+</section>
+</main>
+
+<footer class="wrap">
+  <p>Weather data from <a href="https://open-meteo.com/">Open-Meteo</a>, alerts from the <a href="https://www.weather.gov/">National Weather Service</a>, radar from <a href="https://www.rainviewer.com/">RainViewer</a>. Forecasts are models, not promises; the swearing is a joke, the lightning is not.</p>
+  <p><a href="https://github.com/rare621/Weatherd">Source code on GitHub</a> · GPL-3.0</p>
+</footer>
+</body>
+</html>
