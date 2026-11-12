@@ -30,6 +30,8 @@ Every other weather app was designed by someone who checks the forecast to decid
 
 Real lines from the app. We didn't make these up for the README. Well, we did, but then we put them in the app.
 
+There are **over 110 of them**, 9 to 14 for every kind of weather, and it rotates through them through the day so you never get comfortable.
+
 | When it's… | Weathered says |
 |---|---|
 | 🔥 Hot as hell | *"Hotter than Satan's ballsack. Drink some goddamn water, you sweaty cunt."* |
