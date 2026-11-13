@@ -31,18 +31,18 @@ Every other weather app was designed by someone who checks the forecast to decid
 
 Real lines from the app. We didn't make these up for the README. Well, we did, but then we put them in the app.
 
-There are **over 110 of them**, 9 to 14 for every kind of weather, and it rotates through them through the day so you never get comfortable.
+There are **over 160 of them**, 13 to 20 for every kind of weather, written for the poor bastards who work outside for a living, and it rotates through them through the day so you never get comfortable.
 
 | When it's… | Weathered says |
 |---|---|
-| 🔥 Hot as hell | *"Hotter than Satan's ballsack. Drink some goddamn water, you sweaty cunt."* |
-| 🥶 Freezing | *"Cold enough to snap your dick off. Hat. Gloves. Move, dickhead."* |
-| 🌧️ Raining | *"It's pissing rain. Your phone isn't waterproof either, dumb cunt."* |
-| ❄️ Snowing | *"White shit falling from the sky. Traction, dumbass. Walk like you're 90."* |
-| 💨 Windy | *"That ladder is a kite with a death wish. Don't be a dumb fuck."* |
-| ⚡ Storming | *"Lightning's hunting for the tallest dumb cunt on site. Don't be him."* |
-| 🌫️ Foggy | *"Foggy as fuck. Even your bad decisions will be hard to see today."* |
-| ☀️ Perfect | *"Nice day. Try not to fuck it up like you do everything else."* |
+| 🔥 Hot as hell | *"Hotter than Satan's ballsack. Drink some goddamn water before you pass out in an attic and they find you by the smell."* |
+| 🥶 Freezing | *"Cold enough to snap your dick off. Not that anyone would notice it was gone."* |
+| 🌧️ Raining | *"Mother Nature reviewed your performance and decided to piss all over it. Fair."* |
+| ❄️ Snowing | *"Snow day for the kids. 'No heat' calls for you, sucker."* |
+| 💨 Windy | *"Too windy for the lift, too windy for the ladder, never too windy for your boss to call asking where the fuck you are."* |
+| ⚡ Storming | *"If you die up there, the company sends flowers and posts your job on Indeed the same afternoon. Get down, dickhead."* |
+| 🌫️ Foggy | *"Visibility near zero, same as your chances of ever making foreman."* |
+| ☀️ Perfect | *"Gorgeous day. Some guy at a desk is staring out his window feeling sorry for himself. Don't be smug, he makes double."* |
 
 Tap the insult and you get a fresh one. Yes, you can ask to be insulted on demand. No, we won't judge you for doing it twelve times in a row. (We will.)
 
